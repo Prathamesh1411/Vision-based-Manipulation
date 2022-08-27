@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    <include file="$(find panda_simulation)/launch/spawn_sdf.launch">
+        <arg name="robot_name" value="table_short" />
+        <arg name="x" value="0.0" />
+        <arg name="y" value="0.8" />
+        <arg name="z" value="0.0" />
+        <arg name="roll" value="0"/>
+        <arg name="pitch" value="0"/>
+        <arg name="yaw" value="0.0" />
+        <arg name="sdf_robot_file" value="$(find panda_simulation)/models/table_short/model.sdf" />
+    </include>
+</launch>

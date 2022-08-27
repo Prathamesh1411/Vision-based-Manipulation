@@ -1,0 +1,196 @@
+<?xml version="1.0"?>
+<robot name="box">
+
+    <material name="blue">
+        <color rgba="0 0 1 1"/>
+    </material>
+    <material name="green">
+        <color rgba="0 1 0 1"/>
+    </material>
+    <material name="red">
+        <color rgba="1 0 0 1"/>
+    </material>
+    <material name="purple">
+        <color rgba="0.5 0 0.5 1"/>
+    </material>
+    <material name="white">
+        <color rgba="1 1 1 1"/>
+    </material>
+
+ <!-- Base Link -->
+    <link name="link1">
+        <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="0.4 0.4 0.1"/>
+        </geometry>
+        </collision>
+
+        <visual>
+        <geometry>
+            <box size="0.4 0.4 0.1"/>
+        </geometry>
+        <material name="white"/>
+        </visual>
+
+        <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="6"/>
+        <inertia
+            ixx="0.51" ixy="0.0" ixz="0.0"
+            iyy="0.51" iyz="0.0"
+            izz="0.96"/>
+        </inertial>
+    </link>
+
+    <link name="cyc1">
+        <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <cylinder length="0.01" radius="0.05"/>
+        </geometry>
+        </collision>
+
+        <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <cylinder length="0.01" radius="0.05"/>
+        </geometry>
+        <material name="Red"/>
+        </visual>
+
+        <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="5"/>
+        <inertia
+            ixx="0.019" ixy="0.0" ixz="0.0"
+            iyy="0.019" iyz="0.0"
+            izz="0.00625"/>
+        </inertial>
+    </link>
+
+    <link name="cyc2">
+        <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <cylinder length="0.01" radius="0.05"/>
+        </geometry>
+        </collision>
+
+        <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <cylinder length="0.01" radius="0.05"/>
+        </geometry>
+        <material name="Purple"/>
+        </visual>
+
+        <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="5"/>
+        <inertia
+            ixx="0.019" ixy="0.0" ixz="0.0"
+            iyy="0.019" iyz="0.0"
+            izz="0.00625"/>
+        </inertial>
+    </link>
+
+    <link name="cyc3">
+        <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <cylinder length="0.01" radius="0.05"/>
+        </geometry>
+        </collision>
+
+        <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <cylinder length="0.01" radius="0.05"/>
+        </geometry>
+        <material name="Green"/>
+        </visual>
+
+        <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="5"/>
+        <inertia
+            ixx="0.019" ixy="0.0" ixz="0.0"
+            iyy="0.019" iyz="0.0"
+            izz="0.00625"/>
+        </inertial>
+    </link>
+
+    <link name="cyc4">
+        <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <cylinder length="0.01" radius="0.05"/>
+        </geometry>
+        </collision>
+
+        <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <cylinder length="0.01" radius="0.05"/>
+        </geometry>
+        <material name="Blue"/>
+        </visual>
+
+        <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="5"/>
+        <inertia
+            ixx="0.019" ixy="0.0" ixz="0.0"
+            iyy="0.019" iyz="0.0"
+            izz="0.00625"/>
+        </inertial>
+    </link>
+
+    
+
+    <joint name="base_to_cyc1" type="fixed">
+        <parent link="link1"/>
+        <child link="cyc1"/>
+        <origin xyz="0.1 0.1 0.055"/>
+    </joint>
+
+    <joint name="base_to_cyc2" type="fixed">
+        <parent link="link1"/>
+        <child link="cyc2"/>
+        <origin xyz="-0.1 0.1 0.055"/>
+    </joint>
+
+    <joint name="base_to_cyc3" type="fixed">
+        <parent link="link1"/>
+        <child link="cyc3"/>
+        <origin xyz="0.1 -0.1 0.055"/>
+    </joint>
+
+    <joint name="base_to_cyc4" type="fixed">
+        <parent link="link1"/>
+        <child link="cyc4"/>
+        <origin xyz="-0.1 -0.1 0.055"/>
+    </joint>
+
+    <gazebo reference = "link1">
+        <material>Gazebo/White</material>
+    </gazebo>
+
+    <gazebo reference = "cyc1">
+        <material>Gazebo/Red</material>
+    </gazebo>
+
+    <gazebo reference = "cyc2">
+        <material>Gazebo/Purple</material>
+    </gazebo>
+
+    <gazebo reference = "cyc3">
+        <material>Gazebo/Green</material>
+    </gazebo>
+
+    <gazebo reference = "cyc4">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+
+</robot>

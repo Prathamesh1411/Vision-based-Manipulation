@@ -1,0 +1,47 @@
+<launch>
+  <!-- Load robot description onto parameter server -->
+  <!-- <param name="robot_description" command="$(find xacro)/xacro inorder $(find franka_description)/robots/panda_arm_camera.xacro" /> -->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find franka_description)/robots/panda_arm_hand.urdf.xacro" />
+
+  <!-- Necessary transformation frames -->
+  <node name="map_world_frame" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 map world 100" />
+  <node name="world_panda_frame" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 world panda_link0 100" />
+
+  <node name="pcl_1_frame" pkg="tf" type="static_transform_publisher" args="-0.075468 0.145216 0.765713 1.979445 -0.791860 2.648127 panda_link0 pcl_1_frame 100" />
+  <node name="pcl_2_frame" pkg="tf" type="static_transform_publisher" args="0.175468 0.145216 0.765713 1.979445 -0.791860 3.171726 panda_link0 pcl_2_frame 100" />
+
+  <!-- Spawn the robot in gazebo -->
+  <node name="spawn_franka_urdf" pkg="gazebo_ros" type="spawn_model"
+  	args="-param robot_description -urdf -model robot" output="screen" />
+
+  <!-- Launch gazebo -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="paused" value="true" />
+    <arg name="world_name" value="$(find panda_simulation)/worlds/table.world"/>
+  </include>
+
+  <!-- Launch controllers -->
+  <include file="$(find panda_moveit_controller)/launch/main.launch" />
+
+  <!-- Finally, launch moveit -->
+  <include file="$(find panda_moveit_config)/launch/move_group.launch">
+    <arg name="load_robot_description" value="true" />
+  </include>
+
+
+  <include file="$(find panda_simulation)/launch/spawn_table.launch" />
+
+  <!-- <param name="mustard_description" command="cat '$(find panda_simulation)/urdf/mustard.urdf'" />
+  <node name="spawn_mustard_urdf" pkg="gazebo_ros" type="spawn_model"
+    args="-param mustard_description -urdf -model mustard -x 0.0 -y 0.8 -z 0.531" output="screen" /> -->
+
+  <param name="pudding_description" command="cat '$(find panda_simulation)/urdf/pudding.urdf'" />
+  <node name="spawn_pudding_urdf" pkg="gazebo_ros" type="spawn_model"
+    args="-param pudding_description -urdf -model pudding -x 0.0 -y 0.6 -z 0.531" output="screen" />
+
+    <!-- <param name="drill_description" command="cat '$(find panda_simulation)/urdf/drill.urdf'" />
+  <node name="spawn_drill_urdf" pkg="gazebo_ros" type="spawn_model"
+    args="-param drill_description -urdf -model drill -x 0.2 -y 0.9 -z 0.531" output="screen" /> -->
+
+
+</launch>

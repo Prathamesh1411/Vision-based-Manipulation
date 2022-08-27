@@ -1,0 +1,18 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/prathamesh/rbe_450_x/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/prathamesh/rbe_450_x/src/beginner_tutorials/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS"
+    }
+  ],
+  "version": 4
+}
